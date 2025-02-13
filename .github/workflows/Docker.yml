@@ -21,6 +21,14 @@ jobs:
         # Password or personal access token used to log against the Docker registry
         password: ${{ secrets.PASSWORD_DOCKER_HUB }}
 
+    - name: Download a Build Artifact
+      uses: actions/download-artifact@v4.1.8
+      with:
+        # Name of the artifact to download. If unspecified, all artifacts for the run are downloaded.
+        name: programa
+
+
+
     - name: Build and push Docker images
       uses: docker/build-push-action@v6.13.0
       with:      
