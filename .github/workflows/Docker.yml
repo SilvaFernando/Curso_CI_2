@@ -21,4 +21,14 @@ jobs:
         # Password or personal access token used to log against the Docker registry
         password: ${{ secrets.PASSWORD_DOCKER_HUB }}
 
-          
+    - name: Build and push Docker images
+      uses: docker/build-push-action@v6.13.0
+      with:      
+        # pasta onde o build vai ser realizado
+        context: .
+        # arquivo Dockerfile
+        file: ./Dockerfile
+        # Fazer o PUSH
+        push: true
+        Tags de versão da imagem
+        tags: darkvills/go_ci_alura:${{ github.ref_name }} 
